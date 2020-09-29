@@ -2,7 +2,8 @@
 <div class="Calculator">
     <h3>{{ name }}</h3>
     <div class="Calculator-cover">
-        <CalculatorDisplay :formulas="formulas" :result="result"></CalculatorDisplay>
+        <CalculatorDisplay v-if="result" :formulas="formulas" :result="result"></CalculatorDisplay>
+        <CalculatorDisplay v-if="!result" :formulas="formulas" result="Calculating..."></CalculatorDisplay>
         <CalculatorKeyboard @clicked="btnClick" @onResult="getResult"></CalculatorKeyboard>
     </div>
 </div>
@@ -11,6 +12,7 @@
 <script>
 import CalculatorKeyboard from "../components/CalculatorKeyboard.vue";
 import CalculatorDisplay from "../components/CalculatorDisplay.vue";
+import * as axios from "axios";
 
 export default {
     name: "Calculator",
@@ -35,9 +37,14 @@ export default {
         btnClick(data) {
             this.formulas = data.formulas;
             this.expression = data.expression;
+            this.result = "0";
         },
-        getResult(data) {
-            console.log("getResult", data);
+        async getResult(data) {
+            this.result = null;
+            let result = await axios.get(
+                "http://api.mathjs.org/v4/?expr=" + encodeURIComponent(data.expression)
+            );
+            this.result = result.data.toString();
         },
     },
 };

@@ -35,7 +35,7 @@ export default {
 
             let expression = this.createExpression();
             let lastChar = expression[expression.length - 1];
-            if (lastChar === "." || !Number(lastChar)) {
+            if (lastChar === "." || !Number.isInteger(Number(lastChar))) {
                 expression = expression.slice(0, -1);
             }
             this.$emit(this.emitName, {
