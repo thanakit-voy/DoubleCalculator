@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
+  color: #707070;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
