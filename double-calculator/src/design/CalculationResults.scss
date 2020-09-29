@@ -1,0 +1,36 @@
+.CalculationResults {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-shadow: 4px 4px 5px -1px rgba(224, 220, 224, 1);
+}
+
+.CalculationResult-wrapper {
+  max-height: 420px;
+  overflow: auto;
+}
+
+.CalculationResults-button {
+  text-align: end;
+  padding: 8px 0;
+}
+
+.Clear-button {
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  background-color: #faa7a7;
+  color: white;
+  cursor: pointer;
+  box-shadow: 4px 4px 5px -1px rgba(224, 220, 224, 1);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: #fd9090;
+    box-shadow: none;
+  }
+}
