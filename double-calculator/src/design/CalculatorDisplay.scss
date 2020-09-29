@@ -9,4 +9,10 @@
   display: flex;
   flex-wrap: wrap;
   margin: 4px 0;
+  align-items: center;
+
+  .operator {
+    color: #e623cf;
+    margin: 0 2px;
+  }
 }

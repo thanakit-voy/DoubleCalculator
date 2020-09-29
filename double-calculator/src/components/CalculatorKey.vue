@@ -1,6 +1,6 @@
 <template>
-<button class="CalculatorKey">
-    {{ label }}
+<button class="CalculatorKey" @click="btnClick">
+    {{ button.symbol }}
 </button>
 </template>
 
@@ -8,13 +8,14 @@
 export default {
     name: "CalculatorKeyboard",
     props: {
-        label: {
-            type: String,
-            default: "",
+        button: {
+            type: Object,
+            default: () => {},
         },
-        value: {
-            type: String,
-            default: "",
+    },
+    methods: {
+        btnClick() {
+            this.$emit("clicked", this.$props.button);
         },
     },
 };
