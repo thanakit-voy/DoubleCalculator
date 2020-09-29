@@ -3,10 +3,10 @@
     <div class="Result">{{ result }}</div>
     <div v-if="formulas.length > 0" class="Formula">
         <div v-for="item in formulas" :key="item.id">
-            <span v-if="item.type != 'operator'" class="digit">{{
+            <span v-if="item.type != 'operator'" class="Digit">{{
           item.value
         }}</span>
-            <span v-if="item.type == 'operator'" class="operator">{{
+            <span v-if="item.type == 'operator'" class="Operator">{{
           item.symbol
         }}</span>
         </div>
@@ -35,6 +35,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/design/CalculatorDisplay.scss";
 </style>

@@ -1,0 +1,29 @@
+.CalculationSearch {
+  padding: 1rem 0;
+  font-size: 1.25rem;
+  display: flex;
+}
+
+input {
+  border-radius: 8px;
+  border: solid 1px gray;
+  margin: 0 4px;
+  font-size: 1rem;
+  padding: 4px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+select {
+  border-radius: 8px;
+  border: solid 1px gray;
+  margin: 0 4px;
+  font-size: 1rem;
+  padding: 4px;
+
+  &:focus {
+    outline: none;
+  }
+}

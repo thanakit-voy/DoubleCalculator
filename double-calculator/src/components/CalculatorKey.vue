@@ -1,26 +1,26 @@
 <template>
-<button class="CalculatorKey" @click="btnClick">
+  <button class="CalculatorKey" @click="btnClick">
     {{ button.symbol }}
-</button>
+  </button>
 </template>
 
 <script>
 export default {
-    name: "CalculatorKeyboard",
-    props: {
-        button: {
-            type: Object,
-            default: () => {},
-        },
+  name: "CalculatorKeyboard",
+  props: {
+    button: {
+      type: Object,
+      default: () => {},
     },
-    methods: {
-        btnClick() {
-            this.$emit("clicked", this.$props.button);
-        },
+  },
+  methods: {
+    btnClick() {
+      this.$emit("clicked", this.$props.button);
     },
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/design/CalculatorKey.scss";
 </style>
