@@ -20,7 +20,14 @@ export default {
             button: null,
             lastFomula: null,
             emitName: "clicked",
+            isCalculated: false,
         };
+    },
+    props: {
+        result: {
+            type: String,
+            default: "0",
+        },
     },
     methods: {
         btnClick(button) {
@@ -35,7 +42,7 @@ export default {
 
             let expression = this.createExpression();
             let lastChar = expression[expression.length - 1];
-            if (lastChar === "." || !Number(lastChar)) {
+            if (lastChar === "." || !Number.isInteger(Number(lastChar))) {
                 expression = expression.slice(0, -1);
             }
             this.$emit(this.emitName, {
@@ -48,9 +55,17 @@ export default {
                 this.formulas = [];
             } else if (this.button.value === "equal") {
                 this.emitName = "onResult";
+                this.isCalculated = true;
             }
         },
         notActionClick() {
+            if (this.isCalculated && this.formulas.length > 0) {
+                let formula = this.formulas[0];
+                formula.value = this.$props.result;
+                this.formulas = [formula];
+            }
+            this.isCalculated = false;
+
             if (this.lastFomula) {
                 if (this.button.type === "digit") {
                     this.digitClick();
@@ -97,7 +112,6 @@ export default {
                     id: this.formulas.length + 1,
                 });
             } else if (this.lastFomula.type === "operator") {
-                console.log("sdfdsf");
                 Object.assign(this.lastFomula, {
                     ...this.button,
                     id: this.lastFomula.id,
