@@ -4,7 +4,7 @@
     <div class="Calculator-cover">
         <CalculatorDisplay v-if="result" :formulas="formulas" :result="result"></CalculatorDisplay>
         <CalculatorDisplay v-if="!result" :formulas="formulas" result="Calculating..."></CalculatorDisplay>
-        <CalculatorKeyboard @clicked="btnClick" @onResult="getResult"></CalculatorKeyboard>
+        <CalculatorKeyboard @clicked="btnClick" @onResult="getResult" :result="result"></CalculatorKeyboard>
     </div>
 </div>
 </template>
