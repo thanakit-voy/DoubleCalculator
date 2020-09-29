@@ -1,8 +1,8 @@
 <template>
 <div class="CalculationSearch">
     Results
-    <input style="flex:1" type="text" placeholder="Search by result, date" />
-    <select name="searchOptions" id="searchOptions">
+    <input style="flex:1" type="text" placeholder="Search by result, date" @input="inputFilter" />
+    <select name="searchOptions" id="searchOptions" @change="optionFilter">
         <option value="0">All</option>
         <option v-for="item in calculators" :value="item.id" :key="item.id">{{
         item.name
@@ -18,8 +18,16 @@ export default {
     name: "CalculationSearch",
     data() {
         return {
-            calculators: Calculators
+            calculators: Calculators,
         };
+    },
+    methods: {
+        inputFilter(event) {
+            this.$emit("onInput", event.target.value);
+        },
+        optionFilter(event) {
+            this.$emit("onOption", event.target.value);
+        },
     },
 };
 </script>

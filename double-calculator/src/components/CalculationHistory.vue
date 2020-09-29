@@ -1,7 +1,7 @@
 <template>
 <div class="CalculationHistory">
-    <CalculationSearch></CalculationSearch>
-    <CalculationResults :results="results" @clear="clear"></CalculationResults>
+    <CalculationSearch @onInput="resultFilter" @onOption="optionFilter"></CalculationSearch>
+    <CalculationResults :results="filteredResults" @clear="clear"></CalculationResults>
 </div>
 </template>
 
@@ -14,15 +14,56 @@ export default {
         CalculationSearch,
         CalculationResults,
     },
+    data() {
+        return {
+            filteredResults: [],
+            options: 0,
+            search: "",
+        };
+    },
     props: {
         results: {
             type: Array,
             default: () => [],
         },
     },
+    // created() {
+    //     this.filteredResults = this.$props.results;
+    // },
+    watch: {
+        results(newValue) {
+            this.filteredResults = newValue;
+            this.filter();
+        },
+    },
     methods: {
         clear() {
             this.$emit("clear");
+        },
+        resultFilter(value) {
+            this.search = value;
+            this.filter();
+        },
+        optionFilter(value) {
+            this.options = value;
+            this.filter();
+        },
+        filter() {
+            if (this.options != 0) {
+                this.filteredResults = this.$props.results.filter((elm) => {
+                    return elm.calculatorId == this.options;
+                });
+            } else {
+                this.filteredResults = this.$props.results;
+            }
+
+            if (this.search) {
+                this.filteredResults = this.filteredResults.filter((elm) => {
+                    return (
+                        elm.result.includes(this.search) || elm.date.startsWith(this.search)
+                    );
+                });
+            }
         },
     },
 };
