@@ -13,3 +13,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.Container {
+  flex: 1;
+  padding: 1rem;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Calculator-wrapper {
+  flex: 250px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 1rem;
+}
