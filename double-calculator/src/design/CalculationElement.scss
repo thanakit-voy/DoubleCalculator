@@ -1,0 +1,36 @@
+.CalculationElement {
+  margin: 1.25rem 0;
+}
+
+.Name-wrapper {
+  display: flex;
+  margin: 4px 0;
+
+  .Name {
+    flex: 1;
+  }
+
+  .Date {
+    color: #a6c9e6;
+  }
+}
+
+.Result-wrapper {
+  .Result {
+    border-bottom: solid 1px lightgray;
+    padding: 0.25rem 0;
+    font-size: 24px;
+  }
+
+  .Formula {
+    font-size: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4px 0;
+
+    .Operator {
+      color: #e623cf;
+      margin: 0 2px;
+    }
+  }
+}

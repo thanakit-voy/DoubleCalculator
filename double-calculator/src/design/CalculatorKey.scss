@@ -1,0 +1,30 @@
+.CalculatorKey {
+  background-color: #a7d4fa;
+  border-radius: 8px;
+  min-height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 5px -1px rgba(224, 220, 224, 1);
+  cursor: pointer;
+  font-size: 1.5rem;
+  border: none;
+  color: #707070;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: #7cc3fd;
+    box-shadow: none;
+  }
+
+  &.row-2 {
+    grid-row: span 2;
+  }
+
+  &.col-2 {
+    grid-column: span 2;
+  }
+}
